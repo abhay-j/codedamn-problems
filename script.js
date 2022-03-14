@@ -44,10 +44,15 @@ const spaceAge = (seconds) => {
 		Neptune: 164.79132,
      }
      //foreach planet in the object i have to caulate:
-     // orbital period (seconds) = orbitalPeriodsFraction * 31557600 
-     // {planet}years = secpnds / orbital period (seconds)
-     // insert the value from the above calculation into the yearsInPlanet object at appropriate field.
-     // once the loop completes return the value of yearsInAllPlanets
+	 Object.keys(orbitalPeriodsFractions).forEach((planet)=>{
+		 // orbital period (seconds) = orbitalPeriodsFraction * 31557600 
+		 const oribitalPeriod = orbitalPeriodsFractions[planet] * 31557600;
+		 // {planet}years = seconds / orbital period (seconds)
+		 const planetYears = seconds / oribitalPeriod;
+		 // insert the value from the above calculation into the yearsInPlanet object against appropriate key.
+		 yearsInAllPlanets[planet] = planetYears;
+
+	 })
      // Your solution ends here
 
 	return yearsInAllPlanets
